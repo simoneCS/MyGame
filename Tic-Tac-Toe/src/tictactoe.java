@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
@@ -15,9 +16,9 @@ public class tictactoe extends JFrame {
 	private static final int GRIDSIZE = 3;
 	private TerrainButton[][] grid = new TerrainButton[GRIDSIZE][GRIDSIZE];
 	
-	public tictactoe () {
+	public tictactoe () { 
 		initGUI();
-		setTitle("Tic Tac Tiger");
+		setTitle("Tic Tac Toe");
 		setSize(600,600);
 		setResizable(false);
 		pack();
@@ -59,13 +60,59 @@ public class tictactoe extends JFrame {
 		if(grid[row][col].isRevealed() == false) { 
 			if (clicks%2 == 1) {
 				grid[row][col].setText(player1);
+				check(row,col); 
 			}
 			if (clicks%2 == 0) {
 				grid[row][col].setText(player2);
+				check(row,col);
 			}
 		} else {
-			clicks--;}
+			clicks--;
+			check(row,col);}}
 		
+		private void check(int row, int col) {  
+			if(grid[0][0].getText().equals (grid[0][1].getText()) && grid[0][0].getText().equals(grid[0][2].getText())
+					&& !grid[0][0].getText().equals("") && !grid[0][1].getText().equals("") && !grid[0][2].getText().equals("")) { 
+				  JOptionPane.showMessageDialog(null, " You won!! ");
+			}
+			if(grid[1][0].getText().equals( grid[1][1].getText()) && grid[1][0].getText().equals( grid[1][2].getText())
+					&& !grid[1][0].getText().equals("") && !grid[1][1].getText().equals("") && !grid[1][2].getText().equals("")) { 
+				JOptionPane.showMessageDialog(null, " You won!! ");
+			
+		}
+			if(grid[2][0].getText().equals(grid[2][1].getText()) && grid[2][0].getText().equals(grid[2][2].getText())
+					&& !grid[2][0].getText().equals("") && !grid[2][1].getText().equals("") && !grid[2][2].getText().equals("")) { 
+				JOptionPane.showMessageDialog(null, " You won!! ");
+			
+		}
+			if(grid[0][0].getText().equals(grid[1][0].getText()) && grid[0][0].getText().equals(grid[2][0].getText())
+					&& !grid[0][0].getText().equals("") && !grid[1][0].getText().equals("") && !grid[2][0].getText().equals("")) { 
+				JOptionPane.showMessageDialog(null, " You won!! ");
+			
+		}
+			if(grid[0][1].getText().equals(grid[1][1].getText()) && grid[0][1].getText().equals(grid[2][1].getText())
+					&& !grid[0][1].getText().equals("") && !grid[1][1].getText().equals("") && !grid[2][1].getText().equals("")) { 
+				JOptionPane.showMessageDialog(null, " You won...fifth row!! ");
+			
+		}
+			if(grid[0][2].getText().equals(grid[1][2].getText()) && grid[0][2].getText().equals(grid[2][2].getText())
+					&& !grid[0][2].getText().equals("") && !grid[1][2].getText().equals("") && !grid[2][2].getText().equals("")) { 
+				JOptionPane.showMessageDialog(null, " You won!! ");
+			
+		}
+			if(grid[0][0].getText().equals(grid[1][1].getText()) && grid[0][0].getText().equals( grid[2][2].getText())
+					&& !grid[0][0].getText().equals("") && !grid[1][1].getText().equals("") && !grid[2][2].getText().equals("")) { 
+				JOptionPane.showMessageDialog(null, " You won!! ");
+			
+		}
+			if(grid[2][0].getText().equals(grid[1][1].getText()) && grid[2][0].getText().equals( grid[0][2].getText()) 
+					&& !grid[2][0].getText().equals("") && !grid[1][1].getText().equals("") && !grid[0][2].getText().equals("")) { 
+				JOptionPane.showMessageDialog(null, " You won!! ");
+			
+		}
+			if(clicks == 9 ) { 
+				JOptionPane.showMessageDialog(null, " It's a tie ");
+			}
 		}
    
      
